@@ -1,0 +1,21 @@
+{
+  "name": "angularjs-curd-app",
+  "description": "Angular  CURD",
+  "main": "index.html",
+  "authors": [
+    "SUMIT RIDHAL <sumitridhal@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sumitridhal/vuejs-curd-app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "particles.js": "2.0.0",
+    "vue": "2.3.4"
+  }
+}

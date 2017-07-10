@@ -1,0 +1,33 @@
+{
+  "name": "vuejs-curd-app",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumitridhal/vuejs-curd-app.git"
+  },
+  "author": "SUMIT RIDHAL <sumitridhal@gmail.com>",
+  "license": "MIT",
+  "description": "Angular  CURD",
+  "bugs": {
+    "url": "https://github.com/sumitridhal/vuejs-curd-app/issues"
+  },
+  "homepage": "https://github.com/sumitridhal/vuejs-curd-app#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-bower": "^0.0.13",
+    "gulp-inject": "^4.2.0",
+    "run-sequence": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "gulp build",
+    "build": "http-server -a localhost -p 8085 -c-1",
+    "prestart": "gulp inject ",
+    "start": "http-server -a localhost -p 8085 -c-1"
+  }
+}

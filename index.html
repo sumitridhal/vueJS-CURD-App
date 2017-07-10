@@ -1,119 +1,157 @@
-<div class="container" id="dtapp" style="position: absolute; left: 7%;">
+<html>
 
-  <section class="wrapper site-min-height">
-    <!-- page start-->
-    <section class="panel">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue CURD</title>
+  <link rel="icon" href="/assets/img/favicon.png?v=2" type="image/png" />
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- endinject -->
 
-      <!-- header -->
-      <div class="bg">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-xs-2">
-              <div class="panel-body text-center">
-                <div class="pro-thumb">
-                  <img src="https://vuejs.org/images/logo.png" alt="">
+  <!-- libs:js -->
+  <script src="/assets/libs/vue.js"></script>
+  <script src="/assets/libs/jquery.js"></script>
+  <script src="/assets/libs/bootstrap.js"></script>
+  <script src="/assets/libs/particles.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="/assets/js/particles.js"></script>
+  <!-- endinject -->
+
+  <style>
+    .bg {
+      background: #47cf73;
+      background-image: linear-gradient(33deg, rgb(25, 165, 102) 0%, rgb(12, 109, 193) 100%);
+    }
+  </style>
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="container" id="dtapp" style="position: absolute; left: 7%;">
+
+    <section class="wrapper site-min-height">
+      <!-- page start-->
+      <section class="panel">
+
+        <!-- header -->
+        <div class="bg">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-2">
+                <div class="panel-body text-center">
+                  <div class="pro-thumb">
+                    <img src="/assets/img/logo.png" alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-xs-8">
-              <div class="degree">
-                VueJS CURD
+              <div class="col-xs-8">
+                <div class="degree">
+                  VueJS CURD
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- header end -->
+        <!-- header end -->
 
-      <header class="panel-heading">
-        {{title}} 
-      </header>
-      <div class="panel-body">
-        <div class="adv-table editable-table ">
-          <div class="clearfix">
-            <div class="btn-group">
-              <button id="editable-sample_new" class="btn btn-success" @click="Toggle">
+        <header class="panel-heading">
+          {{title}}
+        </header>
+        <div class="panel-body">
+          <div class="adv-table editable-table ">
+            <div class="clearfix">
+              <div class="btn-group">
+                <button id="editable-sample_new" class="btn btn-success" @click="Toggle">
                                       Add New <i class="fa fa-plus"></i>
                                   </button>
-            </div>
-            <div class="btn-group pull-right">
-              <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tools <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="btn-group pull-right">
+                <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tools <i class="fa fa-angle-down"></i>
                                   </button>
-              <ul class="dropdown-menu pull-right">
-                <li><a href="#">Print</a></li>
-                <li><a href="#">Save as PDF</a></li>
-                <li><a href="#">Export to Excel</a></li>
-              </ul>
+                <ul class="dropdown-menu pull-right">
+                  <li><a href="#">Print</a></li>
+                  <li><a href="#">Save as PDF</a></li>
+                  <li><a href="#">Export to Excel</a></li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div class="space15"></div>
+            <div class="space15"></div>
 
-          <div class="table-responsive" tabindex="1" style="overflow: hidden; outline: none;">
+            <div class="table-responsive" tabindex="1" style="overflow: hidden; outline: none;">
 
-            <div id="editable-sample_wrapper" class="dataTables_wrapper form-inline" role="grid">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div id="editable-sample_length" class="dataTables_length"><label>
+              <div id="editable-sample_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div id="editable-sample_length" class="dataTables_length"><label>
                     <select class="form-control xsmall" v-model="options.limit.value">
   <option v-for="option in options.availableOptions" v-bind:value="option.value">
     {{ option.name }}
   </option>
 </select> records per page</label></div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="dataTables_filter" id="editable-sample_filter"><label>Search: <input type="text" class="form-control medium" v-model="search"></label></div>
+                  </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="dataTables_filter" id="editable-sample_filter"><label>Search: <input type="text" class="form-control medium" v-model="search"></label></div>
-                </div>
-              </div>
-              <table class="table table-striped table-hover table-bordered dataTable" id="editable-sample" aria-describedby="editable-sample_info">
-                <thead>
-                  <tr role="row">
-                    <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Username" style="width: 179px;">Username</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Full Name: activate to sort column ascending" style="width: 263px;">Full Name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Points: activate to sort column ascending" style="width: 119px;">Points</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending" style="width: 175px;">Notes</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 85px;"></th>
-                  </tr>
-                </thead>
+                <table class="table table-striped table-hover table-bordered dataTable" id="editable-sample" aria-describedby="editable-sample_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="Username" style="width: 179px;">Username</th>
+                      <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Full Name: activate to sort column ascending" style="width: 263px;">Full Name</th>
+                      <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Points: activate to sort column ascending" style="width: 119px;">Points</th>
+                      <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending" style="width: 175px;">Notes</th>
+                      <th class="sorting" role="columnheader" tabindex="0" aria-controls="editable-sample" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 85px;"></th>
+                    </tr>
+                  </thead>
 
-                <tbody role="alert" aria-live="polite" aria-relevant="all">
-                  <tr v-show="addNew">
-                    <td class="sorting_1"><input type="text" class="form-control small" v-model="newItem.username" value=""></td>
-                    <td class=""><input type="text" class="form-control small" value="" v-model="newItem.fullname"></td>
-                    <td class=""><input type="text" class="form-control small" value="" v-model="newItem.point"></td>
-                    <td class=""><input type="text" class="form-control small" value="" v-model="newItem.notes"></td>
-                    <td class=""><button class="btn btn-success btn-xs edit" @click="addItem(newItem)"><i class="fa fa-user-plus"></i></button><button class="btn btn-danger btn-xs cancel" @click="cancel()"><i class="fa fa-times"></i></button></td>
-                  </tr>
-                  <tr v-for='(item, index) in filteredItems'  is="td-row" :item="item" :index="index" >  
-                  </tr>
+                  <tbody role="alert" aria-live="polite" aria-relevant="all">
+                    <tr v-show="addNew">
+                      <td class="sorting_1"><input type="text" class="form-control small" v-model="newItem.username" value=""></td>
+                      <td class=""><input type="text" class="form-control small" value="" v-model="newItem.fullname"></td>
+                      <td class=""><input type="text" class="form-control small" value="" v-model="newItem.point"></td>
+                      <td class=""><input type="text" class="form-control small" value="" v-model="newItem.notes"></td>
+                      <td class=""><button class="btn btn-success btn-xs edit" @click="addItem(newItem)"><i class="fa fa-user-plus"></i></button><button class="btn btn-danger btn-xs cancel" @click="cancel()"><i class="fa fa-times"></i></button></td>
+                    </tr>
+                    <tr v-for='(item, index) in filteredItems' is="td-row" :item="item" :index="index">
+                    </tr>
 
-                </tbody>
-              </table>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="dataTables_info" id="editable-sample_info">Showing 1 to 1 of 1 entries</div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="dataTables_paginate paging_bootstrap pagination">
-                    <ul>
-                      <li ng-class="{disabled: currentPage == 0}">
-                        <a href ng-click="prevPage()">« Prev</a>
-                      </li>
-                      <li ng-repeat="n in range(filteredData.length)" ng-class="{active: n == currentPage}" ng-click="setPage()">
-                        <a href ng-bind="n + 1">1</a>
-                      </li>
-                      <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                        <a href ng-click="nextPage()">Next »</a>
-                      </li>
-                    </ul>
+                  </tbody>
+                </table>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="dataTables_info" id="editable-sample_info">Showing 1 to 1 of 1 entries</div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="dataTables_paginate paging_bootstrap pagination">
+                      <ul>
+                        <li ng-class="{disabled: currentPage == 0}">
+                          <a href ng-click="prevPage()">« Prev</a>
+                        </li>
+                        <li ng-repeat="n in range(filteredData.length)" ng-class="{active: n == currentPage}" ng-click="setPage()">
+                          <a href ng-bind="n + 1">1</a>
+                        </li>
+                        <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                          <a href ng-click="nextPage()">Next »</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+      <!-- page end-->
     </section>
-    <!-- page end-->
-  </section>
-</div>
-<div id="particles-js"></div>
+  </div>
+  <div id="particles-js"></div>
+  <!-- app:js -->
+  <script src="/app/components/tdrow.js"></script>
+  <script src="/app/app.js"></script>
+  <!-- endinject -->
+</body>
+
+</html>
