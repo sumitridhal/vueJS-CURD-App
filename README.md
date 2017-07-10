@@ -18,8 +18,8 @@ A [Pen](http://codepen.io/sumitridhal/pen/ybVGZa) by [sumitridhal](http://codepe
 1. Clone the repository: `git clone https://github.com/sumitridhal/vuejs-curd-app.git`
 2. Install the application: `npm install`
 3. Install Bower Dependencies `bower install`
-3. Start the server: `npm start`
-4. View in browser at `http://localhost:8085` 
+4. Start the server: `npm start`
+5. View in browser at `http://localhost:8085` 
 
 > Note: you can change `hostname` and `port` no in `packake.json` file
 
